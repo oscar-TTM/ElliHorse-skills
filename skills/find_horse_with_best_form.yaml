@@ -1,20 +1,43 @@
 ---
-title: Find the horse with the best form
-description: This skill finds the horse with the best form based on form rating or statistics.
+title: Rank horses by start points
+description: This skill ranks horses based on their start points and displays the top 5, along with their section number and the results of their last 5 races.
 Example questions:
-  - Vilken häst har bäst form just nu?
+  - Vilken häst har högst startpoäng?
 ---
 workflow:
   - step: 1
-    type: python
-    description: "To find the horse with the best form, you need to define what 'best form' means. This could be based on a form rating provided in the data, or calculated from recent performance."
+    description: "This code ranks all horses in the round by their start points in descending order, and then prints the top 5. For each of the top 5 horses, it also displays their section number and the placings from their last 5 races."
     required_fields:
-      - horse.form_rating
-      - horse.starts
-  - step: 2
-    type: python
-    description: "If a form rating is available, you can simply find the horse with the highest rating. Otherwise, you need to calculate a form score based on recent placements, times, etc."
-    required_fields:
-      - horse.form_rating
-      - start.placement
-      - start.time
+      - data.starters.horse.horse_name
+      - data.starters.horse.start_points
+      - data.starters.horse.section_number
+      - data.starters.horse.previous_races.placing
+    code example: |
+      starters = data['starters']
+      if not starters:
+          print("No starters found.")
+      else:
+          # Sort the starters by start_points in descending order
+          ranked_starters = sorted(starters, key=lambda s: s['horse']['start_points'], reverse=True)
+
+          print("Top 5 horses ranked by start points:")
+          for i, starter in enumerate(ranked_starters[:5]):
+              horse = starter['horse']
+              horse_name = horse['horse_name']
+              start_points = horse['start_points']
+              section_number = horse['section_number']
+              
+              # Get the placings from the last 5 races
+              last_5_races = horse['previous_races'][:5]
+              last_5_placings = [str(race.get('placing', 'N/A')) for race in last_5_races]
+              placings_str = ", ".join(last_5_placings)
+
+              is_top = " (Top Ranked)" if i == 0 else ""
+              print(f"#{i+1}: {horse_name}{is_top}")
+              print(f"  - Start Points: {start_points}")
+              print(f"  - Section: {section_number}")
+              print(f"  - Last 5 Races: {placings_str}")
+
+          if ranked_starters:
+              top_horse_name = ranked_starters[0]['horse']['horse_name']
+              print(f"\nThe horse with the highest start points is {top_horse_name}.")
