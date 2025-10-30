@@ -6,16 +6,31 @@ Example questions:
 ---
 workflow:
   - step: 1
-    type: python
-    description: "Identify the section you are interested in."
+    description: "Identify the section you are interested in. The data is for a single round, so you only need to specify the section number."
     required_fields:
-      - round.id
       - section.number
   - step: 2
-    type: python
-    description: "For each driver in the section, calculate their win percentage. Then you can compare them."
+    description: "Once the section is identified, this code retrieves the win percentage for each driver in that section and presents a ranked list, indicating the section each driver is competing in."
     required_fields:
-      - section.starts
-      - driver.id
-      - driver.starts
-      - start.placement
+      - data.starters.horse.section_number
+      - data.starters.driver.name
+      - data.starters.driver.year_statistics.year_2025.segerprocent
+    code example: |
+      section_number = 1  # Example section number
+      starters_in_section = [s for s in data['starters'] if s['horse']['section_number'] == section_number]
+
+      if not starters_in_section:
+          print(f"No starters found in section {section_number}.")
+      else:
+          driver_win_percentages = []
+          for starter in starters_in_section:
+              driver_name = starter['driver']['name']
+              win_percentage = starter['driver']['year_statistics']['year_2025']['segerprocent']
+              driver_win_percentages.append({'name': driver_name, 'win_percentage': win_percentage})
+
+          # Sort the drivers by win percentage in descending order
+          ranked_drivers = sorted(driver_win_percentages, key=lambda d: d['win_percentage'], reverse=True)
+
+          print(f"Driver win percentages in section {section_number}:")
+          for driver in ranked_drivers:
+              print(f"- {driver['name']} (Section {section_number}): {driver['win_percentage']}%")
