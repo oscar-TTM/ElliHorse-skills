@@ -1,0 +1,20 @@
+---
+title: Find the horse with the best form
+description: This skill finds the horse with the best form based on form rating or statistics.
+Example questions:
+  - Vilken häst har bäst form just nu?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "To find the horse with the best form, you need to define what 'best form' means. This could be based on a form rating provided in the data, or calculated from recent performance."
+    required_fields:
+      - horse.form_rating
+      - horse.starts
+  - step: 2
+    type: python
+    description: "If a form rating is available, you can simply find the horse with the highest rating. Otherwise, you need to calculate a form score based on recent placements, times, etc."
+    required_fields:
+      - horse.form_rating
+      - start.placement
+      - start.time

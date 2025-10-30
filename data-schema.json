@@ -1,0 +1,281 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "startlist for V85 on 2025-11-01",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "starters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "horse": {
+                "type": "object",
+                "properties": {
+                  "age": { "type": "number" },
+                  "sex": { "type": "string", "enum": ["gelding", "mare", "stallion"] },
+                  "form": { "type": "string" },
+                  "shoe": { "type": "string", "enum": ["The horse has both its front and back shoes on.", "The horse has its front shoes on and back shoes off.", "The horse is barefoot.", "The horse has its front shoes off and back shoes on."] },
+                  "breed": { "type": "string", "enum": ["Standardbred", "Nordic standardbred"] },
+                  "color": { "type": "string", "enum": ["bay brown", "black", "bay", "chestnut", "grey ticked", "light bay"] },
+                  "owner": { "type": "string" },
+                  "sulky": { "type": "string", "enum": ["Vanlig", "Amerikansk"] },
+                  "horse_sex": { "type": "string", "enum": ["gelding", "mare", "stallion"] },
+                  "home_track": { "type": "string" },
+                  "horse_name": { "type": "string" },
+                  "progenitor": {
+                    "type": "object",
+                    "properties": {
+                      "dam": { "type": "object", "properties": { "name": { "type": "string" }, "nationality": { "type": "string", "enum": ["SWEDEN", "NETHERLANDS", "UNITED STATES", "ITALY", "FRANCE", "DENMARK", "NORWAY"] } } },
+                      "sire": { "type": "object", "properties": { "name": { "type": "string" }, "nationality": { "type": "string", "enum": ["UNITED STATES", "FRANCE", "SWEDEN", "NORWAY", "ITALY"] } } },
+                      "damsire": { "type": "object", "properties": { "name": { "type": "string" }, "nationality": { "type": "string", "enum": ["UNITED STATES", "SWEDEN", "FRANCE", "ITALY", "NORWAY", "FINLAND", "GERMANY"] } } }
+                    }
+                  },
+                  "nationality": {
+                    "type": "object",
+                    "properties": {
+                      "born": { "type": "string" },
+                      "owner": { "type": "string", "enum": ["SWEDEN", "ITALY", "GERMANY", "NORWAY"] },
+                      "raised": { "type": "string", "enum": ["SWEDEN", "DENMARK", "UNITED STATES", "ITALY", "NORWAY"] }
+                    }
+                  },
+                  "mutual_races": {
+                    "type": "object",
+                    "properties": {
+                      "races": {
+                        "type": ["array", "null"],
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "scores": { "type": "array", "items": { "type": "object", "properties": { "score": { "type": "number" }, "horse_name": { "type": "string" } } } },
+                            "race_entries": { "type": "array", "items": { "type": "object", "properties": { "date": { "type": "string" }, "result": { "type": "array", "items": { "type": "object", "properties": { "shoes": { "type": "string", "enum": ["Front shoes: on, Back shoes: on", "Front shoes: off, Back shoes: off", "Front shoes: off, Back shoes: on", "Front shoes: on, Back shoes: off"] }, "sulky": { "type": "string", "enum": ["N/A"] }, "driver": { "type": "string" }, "kmTime": { "type": "string" }, "placing": { "type": ["number", "string", "null"] }, "horse_name": { "type": "string" }, "distance:track": { "type": "string" }, "opponent_horse_name": { "type": "string" } } } }, "track_name": { "type": "string" } } } },
+                            "opponent_horse_name": { "type": "string" },
+                            "start_number_in_current_avdelning": { "type": "number" }
+                          }
+                        }
+                      },
+                      "summary": { "type": "string" },
+                      "wins_against_competitors": { "type": "number" }
+                    }
+                  },
+                  "start_number": { "type": "number" },
+                  "start_points": { "type": "number" },
+                  "changed_shoes": { "type": "boolean" },
+                  "sulky_changes": { "type": "string" },
+                  "trend_percent": { "type": "number" },
+                  "previous_races": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "odds": { "type": ["number", "null"] },
+                        "sulky": { "type": "string", "enum": ["N/A", "normal", "american"] },
+                        "track": { "type": "string" },
+                        "driver": { "type": "string" },
+                        "isoDate": { "type": "string" },
+                        "placing": { "type": ["number", "string", "null"] },
+                        "wonRace": { "type": "boolean" },
+                        "distance": { "type": "object", "properties": { "unit": { "type": "string", "enum": ["m"] }, "value": { "type": "number" } } },
+                        "galloped": { "type": "boolean" },
+                        "horse_name": { "type": "string" },
+                        "first_prize": { },
+                        "start_number": { "type": "number" },
+                        "startmetoden": { "type": "string", "enum": ["autostart"] },
+                        "km_time_record": { "type": "string" },
+                        "scratched_status": { "type": "string", "enum": ["This horse's been withdrawn from the race."] }
+                      }
+                    }
+                  },
+                  "section_number": { "type": "number" },
+                  "year_statistics": {
+                    "type": "object",
+                    "properties": {
+                      "year_2024": {
+                        "type": "object",
+                        "properties": {
+                          "earnings": { "type": "object", "properties": { "amount": { "type": ["number", "null"] }, "currency": { "type": "string", "enum": ["sek"] } } },
+                          "first_place": { "type": "number" },
+                          "third_place": { "type": "number" },
+                          "total_races": { "type": "number" },
+                          "second_place": { "type": "number" },
+                          "segerprocent": { "type": ["number", "null"] }
+                        }
+                      },
+                      "year_2025": {
+                        "type": "object",
+                        "properties": {
+                          "earnings": { "type": "object", "properties": { "amount": { "type": "number" }, "currency": { "type": "string", "enum": ["sek"] } } },
+                          "first_place": { "type": "number" },
+                          "third_place": { "type": "number" },
+                          "total_races": { "type": "number" },
+                          "second_place": { "type": "number" },
+                          "segerprocent": { "type": "number" }
+                        }
+                      }
+                    }
+                  },
+                  "driver_this_race": { "type": "string" },
+                  "wins_with_driver": { "type": "number" },
+                  "wins_against_peers": { "type": "number" },
+                  "best_record_km_time": {
+                    "type": "object",
+                    "properties": {
+                      "overall": { "type": "string" },
+                      "overall_numeric": { "type": "number" },
+                      "auto_start_long_distance": { "type": "string" },
+                      "auto_start_short_distance": { "type": "string" },
+                      "volte_start_long_distance": { "type": "string", "enum": ["This horse doesn't have a record km time for the same distance."] },
+                      "auto_start_medium_distance": { "type": "string" },
+                      "volte_start_short_distance": { "type": "string", "enum": ["This horse doesn't have a record km time for the same distance."] },
+                      "volte_start_medium_distance": { "type": "string", "enum": ["This horse doesn't have a record km time for the same distance."] },
+                      "same_distance_as_current_race": { "type": "string" },
+                      "auto_start_long_distance_numeric": { "type": ["number", "null"] },
+                      "auto_start_short_distance_numeric": { "type": ["number", "null"] },
+                      "volte_start_long_distance_numeric": { },
+                      "auto_start_medium_distance_numeric": { "type": "number" },
+                      "volte_start_short_distance_numeric": { },
+                      "volte_start_medium_distance_numeric": { },
+                      "same_distance_as_current_race_numeric": { "type": ["number", "null"] }
+                    }
+                  },
+                  "lifetime_statistics": {
+                    "type": "object",
+                    "properties": {
+                      "earnings": { "type": "object", "properties": { "amount": { "type": "number" }, "currency": { "type": "string", "enum": ["sek"] } } },
+                      "first_place": { "type": "number" },
+                      "third_place": { "type": "number" },
+                      "total_races": { "type": "number" },
+                      "second_place": { "type": "number" },
+                      "segerprocent": { "type": "number" }
+                    }
+                  },
+                  "days_since_last_race": { "type": "number" },
+                  "shoe_change_description": { "type": "string" },
+                  "scratch_status_description": { "type": "string", "enum": ["This horse's running in the race."] },
+                  "total_race_count_in_thirty_days_from_current_race": { "type": "number" }
+                }
+              },
+              "trainer": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "birth_year": { "type": "number" },
+                  "home_track": { "type": "string" },
+                  "nationality": { "type": "string", "enum": ["SWEDEN", "FINLAND", "ITALY", "NORWAY"] },
+                  "year_statistics": {
+                    "type": "object",
+                    "properties": {
+                      "year_2024": {
+                        "type": "object",
+                        "properties": {
+                          "earnings": { "type": "object", "properties": { "amount": { "type": ["number", "null"] }, "currency": { "type": "string", "enum": ["sek"] } } },
+                          "first_place": { "type": "number" },
+                          "third_place": { "type": "number" },
+                          "total_races": { "type": "number" },
+                          "second_place": { "type": "number" },
+                          "segerprocent": { "type": ["number", "null"] }
+                        }
+                      },
+                      "year_2025": {
+                        "type": "object",
+                        "properties": {
+                          "earnings": { "type": "object", "properties": { "amount": { "type": "number" }, "currency": { "type": "string", "enum": ["sek"] } } },
+                          "first_place": { "type": "number" },
+                          "third_place": { "type": "number" },
+                          "total_races": { "type": "number" },
+                          "second_place": { "type": "number" },
+                          "segerprocent": { "type": "number" }
+                        }
+                      }
+                    }
+                  },
+                  "horses_trained_in_current_race": { "type": "array", "items": { "type": "object", "properties": { "horse_name": { "type": "string" }, "start_number": { "type": "number" }, "section_number": { "type": "number" } } } },
+                  "number_of_horses_trained_in_current_race": { "type": "number" }
+                }
+              },
+              "driver": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "birth_year": { "type": "number" },
+                  "home_track": { "type": "string" },
+                  "nationality": { "type": "string", "enum": ["SWEDEN", "NORWAY", "DENMARK"] },
+                  "year_statistics": {
+                    "type": "object",
+                    "properties": {
+                      "year_2024": {
+                        "type": "object",
+                        "properties": {
+                          "earnings": { "type": "object", "properties": { "amount": { "type": "number" }, "currency": { "type": "string", "enum": ["sek"] } } },
+                          "first_place": { "type": "number" },
+                          "third_place": { "type": "number" },
+                          "total_races": { "type": "number" },
+                          "second_place": { "type": "number" },
+                          "segerprocent": { "type": "number" }
+                        }
+                      },
+                      "year_2025": {
+                        "type": "object",
+                        "properties": {
+                          "earnings": { "type": "object", "properties": { "amount": { "type": "number" }, "currency": { "type": "string", "enum": ["sek"] } } },
+                          "first_place": { "type": "number" },
+                          "third_place": { "type": "number" },
+                          "total_races": { "type": "number" },
+                          "second_place": { "type": "number" },
+                          "segerprocent": { "type": "number" }
+                        }
+                      }
+                    }
+                  },
+                  "number_of_horses_driven_in_current_race": { "type": "number" },
+                  "horses_assigned_to_driver_in_current_race": { "type": "array", "items": { "type": "object", "properties": { "horse_name": { "type": "string" }, "start_number": { "type": "number" }, "section_number": { "type": "number" } } } }
+                }
+              },
+              "betting_info": {
+                "type": "object",
+                "properties": {
+                  "v-odds": { "type": "number" },
+                  "V85percent": { "type": "number" }
+                }
+              },
+              "scratched_status": { "type": "boolean" }
+            }
+          }
+        },
+        "section_metadata": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "distance": { "type": "object", "properties": { "unit": { "type": "string", "enum": ["m"] }, "value": { "type": "number" } } },
+              "start_time": { "type": "string", "enum": ["01/11/2025, 16:10 (this Saturday, next week)", "01/11/2025, 16:32 (this Saturday, next week)", "01/11/2025, 16:54 (this Saturday, next week)", "01/11/2025, 17:16 (this Saturday, next week)", "01/11/2025, 17:38 (this Saturday, next week)", "01/11/2025, 18:05 (this Saturday, next week)", "01/11/2025, 18:25 (this Saturday, next week)", "01/11/2025, 18:45 (this Saturday, next week)"] },
+              "startmetoden": { "type": "string", "enum": ["Vault", "Autostart"] },
+              "section_number": { "type": "number" },
+              "section_favourite": { "type": "string", "enum": ["Emporio Broline", "Ike Zet", "Guli Hektor", "Golden Cresent", "Mellby Legacy", "Global Etalon", "Monalisa B.R.", "Västerbo Exciting"] },
+              "number_of_starters": { "type": "number" },
+              "participating_gender": { "type": "string", "enum": ["ENG: mares, geldings and stallions. SE: ston, valacker och hingstar", "ENG: only mares. SE: endast ston.", "ENG: geldings and stallions. SE: valacker och hingstar"] }
+            }
+          }
+        },
+        "race_metadata": {
+          "type": "object",
+          "properties": {
+            "track": { "type": "string", "enum": ["Romme"] },
+            "start_time": { "type": "string", "enum": ["01/11/2025, 16:10 (this Saturday, next week)"] },
+            "jackpot": { "type": "string", "enum": ["No jackpot for this omgång."] },
+            "eightPotPrizePool": { "type": "string" },
+            "sevenRightsPrizePool": { "type": "string" },
+            "sixRightsPrizePool": { "type": "string" },
+            "fiveRightsPrizePool": { "type": "string" },
+            "turnover": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

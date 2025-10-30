@@ -1,0 +1,17 @@
+Kategori,Skill
+Grundläggande hämtning,Hämta sektionsdetaljer och klassificering för en specifik omgång
+Grundläggande hämtning,Hämta alla startande hästar i en avdelning med basinformation
+Grundläggande hämtning,"Hämta hästar baserat på specifika attribut (ålder, hemmabana)"
+Prestationsanalys (Tid/Hastighet),Hitta hästen med snabbast rekordtid (km-tid) i en avdelning
+Prestationsanalys (Tid/Hastighet),Hitta hästen med snabbast tid i de senaste 5 starterna
+Prestationsanalys (Tid/Hastighet),Hämta hästarnas bästa tid på en specifik distans
+Prestationsanalys (Statistik/Form),Hitta hästen med högst startpoäng i en avdelning
+Prestationsanalys (Statistik/Form),Hämta en hästs senaste placeringar
+Prestationsanalys (Statistik/Form),Hitta hästen med bäst form (baserat på formrating eller statistik)
+Analys av aktörer (Kuskar/Tränare),Hämta en kusks profil och segerprocent (totalt eller på specifik bana)
+Analys av aktörer (Kuskar/Tränare),Hämta alla starter för en specifik kusk eller tränare
+Analys av aktörer (Kuskar/Tränare),Jämför segerprocent för alla kuskar i en avdelning
+Analys av aktörer (Kuskar/Tränare),Hitta hästen med flest vinster med sin nuvarande kusk
+Speldata och odds,Hämta aktuella odds och spelprocent (V85) för en häst
+Speldata och odds,Hitta hästen med högst trendprocent i en avdelning
+Speldata och odds,Identifiera den svåraste avdelningen baserat på favoritstatistik

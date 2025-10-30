@@ -1,0 +1,21 @@
+---
+title: Get all starting horses in a section with basic information
+description: This skill retrieves all starting horses in a section with basic information.
+Example questions:
+  - Vilka hästar startar i avdelning 3?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the section (avdelning) you are interested in. This can be done by providing the section's ID or the round ID and section number."
+    required_fields:
+      - round.id
+      - section.number
+  - step: 2
+    type: python
+    description: "Once the section is identified, you can access the list of starting horses. For each horse, you can retrieve basic information like name, age, and home track."
+    required_fields:
+      - section.starts
+      - horse.name
+      - horse.age
+      - horse.home_track

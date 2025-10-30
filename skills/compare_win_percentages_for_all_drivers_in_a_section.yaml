@@ -1,0 +1,21 @@
+---
+title: Compare win percentages for all drivers in a section
+description: This skill compares the win percentages for all drivers in a section.
+Example questions:
+  - Jämför kuskarnas segerprocent i V85-3.
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the section you are interested in."
+    required_fields:
+      - round.id
+      - section.number
+  - step: 2
+    type: python
+    description: "For each driver in the section, calculate their win percentage. Then you can compare them."
+    required_fields:
+      - section.starts
+      - driver.id
+      - driver.starts
+      - start.placement

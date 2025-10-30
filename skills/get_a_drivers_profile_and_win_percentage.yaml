@@ -1,0 +1,20 @@
+---
+title: Get a driver's profile and win percentage
+description: "This skill retrieves a driver's profile and win percentage (total or on a specific track)."
+Example questions:
+  - Vad är Erik Adielssons segerprocent på Solvalla?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the driver you are interested in. You can also specify a track to get the win percentage for that specific track."
+    required_fields:
+      - driver.id
+      - track.id
+  - step: 2
+    type: python
+    description: "Retrieve the driver's profile information. To calculate the win percentage, you need to get all the driver's starts and count the number of wins."
+    required_fields:
+      - driver.profile
+      - driver.starts
+      - start.placement

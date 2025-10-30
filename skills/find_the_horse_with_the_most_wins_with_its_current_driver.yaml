@@ -1,0 +1,23 @@
+---
+title: Find the horse with the most wins with its current driver
+description: This skill finds the horse with the most wins with its current driver.
+Example questions:
+  - Vilket ekipage har vunnit flest lopp tillsammans?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the section you are interested in to get the horse-driver combinations."
+    required_fields:
+      - round.id
+      - section.number
+  - step: 2
+    type: python
+    description: "For each horse, get its current driver. Then, filter the horse's starts by the current driver and count the number of wins."
+    required_fields:
+      - section.starts
+      - horse.id
+      - driver.id
+      - horse.starts
+      - start.driver
+      - start.placement

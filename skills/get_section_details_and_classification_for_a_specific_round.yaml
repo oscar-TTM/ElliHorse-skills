@@ -1,0 +1,20 @@
+---
+title: Get section details and classification for a specific round
+description: This skill retrieves the section details and classification for a specific round.
+Example questions:
+  - Kan du ge mig detaljerna för V85-omgången på lördag?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "First, you need to identify the specific round you are interested in. This can be done by providing the round's ID or a combination of the date and track."
+    required_fields:
+      - round.id
+      - round.date
+      - round.track
+  - step: 2
+    type: python
+    description: "Once the round is identified, you can access its details. The section details and classification are usually available as part of the round's data."
+    required_fields:
+      - round.sections
+      - round.classification

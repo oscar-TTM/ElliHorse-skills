@@ -1,0 +1,18 @@
+---
+title: Identify the most difficult section based on favorite statistics
+description: This skill identifies the most difficult section based on favorite statistics.
+Example questions:
+  - Vilken är den svåraste avdelningen i dagens V85?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "To identify the most difficult section, you need to define what 'difficult' means. This could be based on the win percentage of favorites, the number of skrällar (upsets), etc."
+    required_fields:
+      - round.sections
+  - step: 2
+    type: python
+    description: "For each section, analyze the favorite's statistics. For example, you can calculate the win percentage of the favorite in each section. The section with the lowest win percentage for the favorite could be considered the most difficult."
+    required_fields:
+      - section.favorite
+      - favorite.win_percentage

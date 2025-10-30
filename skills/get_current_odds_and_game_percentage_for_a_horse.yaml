@@ -1,0 +1,19 @@
+---
+title: Get current odds and game percentage for a horse
+description: "This skill retrieves the current odds and game percentage (V85) for a horse."
+Example questions:
+  - Vad är oddsen och spelprocenten för [hästnamn] i V85?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the horse and the game you are interested in (e.g., V85)."
+    required_fields:
+      - horse.id
+      - game.type
+  - step: 2
+    type: python
+    description: "Retrieve the current odds and game percentage for the specified horse and game."
+    required_fields:
+      - horse.odds
+      - horse.game_percentage

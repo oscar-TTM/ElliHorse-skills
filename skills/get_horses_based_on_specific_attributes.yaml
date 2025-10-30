@@ -1,0 +1,20 @@
+---
+title: Get horses based on specific attributes
+description: "This skill retrieves horses based on specific attributes like age, and home track."
+Example questions:
+  - Finns det några 5-åriga hästar från Solvalla som tävlar?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "First, you need to define the attributes you want to filter by. For example, you can filter by age and home track."
+    required_fields:
+      - horse.age
+      - horse.home_track
+  - step: 2
+    type: python
+    description: "Iterate through all the horses and check if they match the specified attributes. Return the list of matching horses."
+    required_fields:
+      - horse.name
+      - horse.age
+      - horse.home_track

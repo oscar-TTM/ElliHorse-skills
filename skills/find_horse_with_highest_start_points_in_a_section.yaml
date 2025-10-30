@@ -1,0 +1,36 @@
+---
+title: Find the horse with the highest start start_points in a section
+description: This skill finds the horse with the highest start points in a section.
+Example questions:
+  - Vilken häst har bäst form?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the section you are interested in. The data is for a single round, so you only need to specify the section number."
+    required_fields:
+      - section.number
+  - step: 2
+    type: python
+    description: "Once the section is identified, this code ranks the horses by their start points in descending order and identifies the horse with the highest score."
+    required_fields:
+      - data.starters.horse.section_number
+      - data.starters.horse.start_points
+      - data.starters.horse.horse_name
+    code: |
+      section_number = 1  # Example section number
+      starters_in_section = [s for s in data['starters'] if s['horse']['section_number'] == section_number]
+
+      if not starters_in_section:
+          print(f"No starters found in section {section_number}.")
+      else:
+          # Sort the starters by start_points in descending order
+          ranked_starters = sorted(starters_in_section, key=lambda s: s['horse']['start_points'], reverse=True)
+
+          print(f"Ranked list of horses in section {section_number} by start points:")
+          for i, starter in enumerate(ranked_starters):
+              rank = i + 1
+              horse_name = starter['horse']['horse_name']
+              start_points = starter['horse']['start_points']
+              is_highest = " (Highest)" if i == 0 else ""
+              print(f"{rank}. {horse_name} - Start points: {start_points}{is_highest}")

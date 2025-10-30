@@ -1,0 +1,19 @@
+---
+title: Find the horse with the fastest record time in a section
+description: This skill finds the horse with the fastest record time (km-time) in a section.
+Example questions:
+  - Vem har den snabbaste rekordtiden i avdelning 5?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the section you are interested in."
+    required_fields:
+      - round.id
+      - section.number
+  - step: 2
+    type: python
+    description: "Iterate through all the horses in the section and find the one with the fastest record time. The record time is usually available in the horse's performance data."
+    required_fields:
+      - section.starts
+      - horse.performance.record_time

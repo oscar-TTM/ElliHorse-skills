@@ -1,0 +1,19 @@
+---
+title: Get all starts for a specific driver or trainer
+description: This skill retrieves all starts for a specific driver or trainer.
+Example questions:
+  - Visa alla starter för Björn Goop.
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the driver or trainer you are interested in."
+    required_fields:
+      - driver.id
+      - trainer.id
+  - step: 2
+    type: python
+    description: "Retrieve all the starts for the specified driver or trainer."
+    required_fields:
+      - driver.starts
+      - trainer.starts

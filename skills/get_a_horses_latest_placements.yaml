@@ -1,0 +1,18 @@
+---
+title: Get a horse's latest placements
+description: This skill retrieves a horse's latest placements.
+Example questions:
+  - Hur har det gått för [hästnamn] i de senaste starterna?
+---
+workflow:
+  - step: 1
+    type: python
+    description: "Identify the horse you are interested in."
+    required_fields:
+      - horse.id
+  - step: 2
+    type: python
+    description: "Retrieve the horse's latest starts and get the placement for each start."
+    required_fields:
+      - horse.starts
+      - start.placement
